@@ -146,7 +146,7 @@ Based on these optimizations, the basic sets are configured like this:
 
 ### Custom Optimizations.
 
-You can create you own optimizations by extending the class `BABYLON.CustomOptimization`. The new class must provide two functions, `onApply` and `onGetDescription`. Every instance takes a `priority` , its only argument and also a number. For example:
+You can create you own optimizations by extending the class `BABYLON.CustomOptimization`. The new class must provide two functions, `apply` and `getDescription`. Every instance takes a `priority` , its only argument and also a number. For example:
 
 ```javascript
 class MyCustomOptimization extends BABYLON.CustomOptimization{
@@ -154,10 +154,11 @@ class MyCustomOptimization extends BABYLON.CustomOptimization{
         super(priority)
     }
 
-    onApply(){
+    apply(){
         // Some optimizing code
+	return true;
     }
-    onGetDescription(){
+    getDescription(){
         // A desription of your optimization
         return "I make framerate go prrrr!";
     }
